@@ -8,11 +8,14 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const questions = require('./routes/api/questions');
+const jobs = require('./routes/api/jobs');
 
 const app = express();
 
 // Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 
 // DB Config
@@ -35,6 +38,7 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 app.use('/api/questions', questions);
+app.use('/api/jobs', jobs);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
