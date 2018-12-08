@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 
-class ProfileCreds extends Component {
+class JobCreds extends Component {
   render() {
     const { experience, education } = this.props;
 
@@ -86,4 +86,4 @@ class ProfileCreds extends Component {
   }
 }
 
-export default ProfileCreds;
+export default JobCreds;

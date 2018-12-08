@@ -2,61 +2,57 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ProfileHeader from './ProfileHeader';
-import ProfileAbout from './ProfileAbout';
-import ProfileCreds from './ProfileCreds';
-import ProfileGithub from './ProfileGithub';
+import JobHeader from './JobHeader';
+import JobAbout from './JobAbout';
+import JobCreds from './JobCreds';
 import Spinner from '../common/Spinner';
-import { getProfileByHandle } from '../../actions/profileActions';
+import { getJobById } from '../../actions/jobActions';
 
-class Profile extends Component {
+class Job extends Component {
   componentDidMount() {
-    if (this.props.match.params.handle) {
-      this.props.getProfileByHandle(this.props.match.params.handle);
+    if (this.props.match.params.id) {
+      this.props.getJobById(this.props.match.params.id);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile === null && this.props.profile.loading) {
+    if (nextProps.job.job === null && this.props.job.loading) {
       this.props.history.push('/not-found');
     }
   }
 
   render() {
-    const { profile, loading } = this.props.profile;
-    let profileContent;
+    const { job, loading } = this.props.job;
+    let jobContent;
 
-    if (profile === null || loading) {
-      profileContent = <Spinner />;
+    if (job === null || loading) {
+      jobContent = <Spinner />;
     } else {
-      profileContent = (
+      jobContent = (
         <div>
           <div className="row">
             <div className="col-md-6">
-              <Link to="/profiles" className="btn btn-light mb-3 float-left">
-                Back To Profiles
+              <Link to="/job" className="btn btn-light mb-3 float-left">
+                Back To Job adverts
               </Link>
             </div>
             <div className="col-md-6" />
           </div>
-          <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile} />
-          <ProfileCreds
-            education={profile.education}
-            experience={profile.experience}
+          <JobHeader job={job} />
+          <JobAbout job={job} />
+          <JobCreds
+            education={job.education}
+            experience={job.experience}
           />
-          {profile.githubusername ? (
-            <ProfileGithub username={profile.githubusername} />
-          ) : null}
         </div>
       );
     }
 
     return (
-      <div className="profile">
+      <div className="job">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">{profileContent}</div>
+            <div className="col-md-12">{jobContent}</div>
           </div>
         </div>
       </div>
@@ -64,13 +60,13 @@ class Profile extends Component {
   }
 }
 
-Profile.propTypes = {
-  getProfileByHandle: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+Job.propTypes = {
+  getJobById: PropTypes.func.isRequired,
+  job: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  job: state.job
 });
 
-export default connect(mapStateToProps, { getProfileByHandle })(Profile);
+export default connect(mapStateToProps, { getJobById })(Job);

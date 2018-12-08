@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import isEmpty from '../../validation/is-empty';
 
-class ProfileHeader extends Component {
+class JobHeader extends Component {
   render() {
-    const { profile } = this.props;
+    const { job } = this.props;
 
     return (
       <div className="row">
@@ -11,82 +11,18 @@ class ProfileHeader extends Component {
           <div className="card card-body bg-info text-white mb-3">
             <div className="row">
               <div className="col-4 col-md-3 m-auto">
-                <img
-                  className="rounded-circle"
-                  src={profile.user.avatar}
-                  alt=""
-                />
+                
               </div>
             </div>
             <div className="text-center">
-              <h1 className="display-4 text-center">{profile.user.name}</h1>
+              <h1 className="display-4 text-center">{job.title}</h1>
               <p className="lead text-center">
-                {profile.status}{' '}
-                {isEmpty(profile.company) ? null : (
-                  <span>at {profile.company}</span>
+                {isEmpty(job.sector) ? null : (
+                  <span>in {job.location}</span>
                 )}
               </p>
-              {isEmpty(profile.location) ? null : <p>{profile.location}</p>}
               <p>
-                {isEmpty(profile.website) ? null : (
-                  <a
-                    className="text-white p-2"
-                    href={profile.website}
-                    target="_blank"
-                  >
-                    <i className="fas fa-globe fa-2x" />
-                  </a>
-                )}
-
-                {isEmpty(profile.social && profile.social.twitter) ? null : (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.twitter}
-                    target="_blank"
-                  >
-                    <i className="fab fa-twitter fa-2x" />
-                  </a>
-                )}
-
-                {isEmpty(profile.social && profile.social.facebook) ? null : (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.facebook}
-                    target="_blank"
-                  >
-                    <i className="fab fa-facebook fa-2x" />
-                  </a>
-                )}
-
-                {isEmpty(profile.social && profile.social.linkedin) ? null : (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.linkedin}
-                    target="_blank"
-                  >
-                    <i className="fab fa-linkedin fa-2x" />
-                  </a>
-                )}
-
-                {isEmpty(profile.social && profile.social.youtube) ? null : (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.youtube}
-                    target="_blank"
-                  >
-                    <i className="fab fa-youtube fa-2x" />
-                  </a>
-                )}
-
-                {isEmpty(profile.social && profile.social.instagram) ? null : (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.instagram}
-                    target="_blank"
-                  >
-                    <i className="fab fa-instagram fa-2x" />
-                  </a>
-                )}
+                some header content
               </p>
             </div>
           </div>
@@ -96,4 +32,4 @@ class ProfileHeader extends Component {
   }
 }
 
-export default ProfileHeader;
+export default JobHeader;
