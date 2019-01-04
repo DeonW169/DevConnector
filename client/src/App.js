@@ -15,6 +15,7 @@ import {
 import {
   clearCurrentProfile
 } from './actions/profileActions';
+import { clearCurrentJob } from './actions/jobActions';
 
 import {
   Provider
@@ -63,6 +64,8 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
     // Clear current Profile
     store.dispatch(clearCurrentProfile());
+    // Clear current Job
+    store.dispatch(clearCurrentJob());
     // Redirect to login
     window.location.href = '/login';
   }

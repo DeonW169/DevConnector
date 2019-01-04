@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner';
 import JobItem from './JobItem';
-import { getJobs } from '../../actions/jobActions';
+import { getJobs } from '../../actions/jobActions'; 
 
 class Jobs extends Component {
   componentDidMount() {
