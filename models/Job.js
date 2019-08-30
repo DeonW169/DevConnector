@@ -44,6 +44,10 @@ const JobSchema = new Schema({
     type: [String],
     required: true
   },
+  education: {
+    type: [String],
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now
